@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mini Store | Cửa hàng mini</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-content">
+      <a class="brand" href="#" aria-label="Mini Store trang chủ">
+        <span class="brand-mark">M</span>
+        <span>Mini Store</span>
+      </a>
+      <p class="header-caption">Khám phá sản phẩm yêu thích của bạn</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="intro">
+      <p class="eyebrow">ONLINE SHOP</p>
+      <h1>Cửa hàng mini</h1>
+      <p class="intro-text">Sản phẩm được tải trực tiếp từ DummyJSON API.</p>
+    </section>
+
+    <section class="toolbar" aria-label="Bộ lọc sản phẩm">
+      <label class="search-wrap">
+        <span class="sr-only">Tìm kiếm sản phẩm</span>
+        <span class="search-icon" aria-hidden="true">⌕</span>
+        <input id="search-input" type="search" placeholder="Tìm sản phẩm..." autocomplete="off">
+        <button id="clear-search" class="clear-search" type="button" aria-label="Xóa từ khóa" hidden>×</button>
+      </label>
+
+      <label class="select-wrap">
+        <span class="sr-only">Danh mục</span>
+        <select id="category-select">
+          <option value="">Tất cả danh mục</option>
+        </select>
+      </label>
+
+      <label class="select-wrap">
+        <span class="sr-only">Sắp xếp sản phẩm</span>
+        <select id="sort-select">
+          <option value="">Mặc định</option>
+          <option value="price-asc">Giá: thấp đến cao</option>
+          <option value="price-desc">Giá: cao đến thấp</option>
+          <option value="rating-desc">Đánh giá: cao đến thấp</option>
+          <option value="rating-asc">Đánh giá: thấp đến cao</option>
+        </select>
+      </label>
+    </section>
+
+    <section class="results-heading">
+      <div>
+        <h2>Sản phẩm</h2>
+        <p id="result-summary" class="muted">Đang chuẩn bị danh sách...</p>
+      </div>
+      <button id="reload-button" class="button button-ghost" type="button">↻ Tải lại</button>
+    </section>
+
+    <section id="status-region" class="status-region" aria-live="polite">
+      <div id="loading-state" class="status-card" hidden>
+        <span class="spinner" aria-hidden="true"></span>
+        <span>Đang tải sản phẩm...</span>
+      </div>
+      <div id="error-state" class="status-card status-error" hidden>
+        <span class="status-symbol" aria-hidden="true">!</span>
+        <div>
+          <strong>Có lỗi xảy ra</strong>
+          <p id="error-message">Không thể tải dữ liệu.</p>
+          <button id="retry-button" class="button button-primary" type="button">Thử lại</button>
+        </div>
+      </div>
+      <div id="empty-state" class="status-card" hidden>
+        <span class="status-symbol" aria-hidden="true">⌕</span>
+        <div>
+          <strong>Không tìm thấy sản phẩm</strong>
+          <p id="empty-message">Không có sản phẩm phù hợp.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="product-grid" class="product-grid" aria-label="Danh sách sản phẩm"></section>
+
+    <nav id="pagination" class="pagination" aria-label="Phân trang">
+      <button id="prev-button" class="button button-ghost" type="button" disabled>← Trước</button>
+      <span id="page-info" class="page-info">Trang 1 / 1</span>
+      <button id="next-button" class="button button-ghost" type="button" disabled>Sau →</button>
+    </nav>
+  </main>
+
+  <div id="product-modal" class="modal" hidden>
+    <div class="modal-backdrop" data-close-modal></div>
+    <section class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button id="modal-close" class="modal-close" type="button" aria-label="Đóng">×</button>
+      <div id="modal-content">
+        <div class="modal-loading"><span class="spinner"></span> Đang tải chi tiết...</div>
+      </div>
+    </section>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">Mini Store · Thực hành HTML, CSS, JavaScript và Axios</div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
